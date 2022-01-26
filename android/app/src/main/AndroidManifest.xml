@@ -7,6 +7,7 @@
    <application
         android:label="widget_test"
         android:icon="@mipmap/ic_launcher">
+        
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"
@@ -44,5 +45,6 @@
 
         <meta-data android:name="com.google.android.geo.API_KEY"
         android:value="AIzaSyAN8X0NoZb0FuPu3paNRah-euws6tQPi_I"/>
+        
     </application>
 </manifest>

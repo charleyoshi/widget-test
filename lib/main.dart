@@ -13,7 +13,8 @@ import 'package:flutter_stripe/flutter_stripe.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  Stripe.publishableKey = "stripePublishableKey";
+  Stripe.publishableKey =
+      "pk_test_51K4dyGCIBIVSqdVSeHxcWVD1iY1trb22b0PmJ796bXSTLnvCBcfRww6JBqUIWg19EDk0CbMpO5FSst56JYeMJYg300uMiehnUr";
   runApp(const MyApp());
 }
 

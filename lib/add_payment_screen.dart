@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
+import 'package:flutter_stripe/flutter_stripe.dart';
 import './register.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import './globals.dart' as globals;
@@ -31,37 +32,25 @@ class _AddPaymentScreenState extends State<AddPaymentScreen> {
               ),
             ),
             Container(
-                height: MediaQuery.of(context).size.height,
-                width: double.infinity,
-                child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Form(
-                        key: _formKey,
-                        child: Expanded(
-                          child: Column(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: [
-                                Column(children: [
-                                  Text('Add Payment Method',
-                                      style: TextStyle(
-                                          fontSize: 30,
-                                          fontWeight: FontWeight.bold)),
-                                  SizedBox(
-                                    height: 20,
-                                  ),
-                                  Text('Powered by Stripe',
-                                      style: TextStyle(
-                                          fontSize: 15, color: Colors.grey)),
-                                ]),
-                                Container(
-                                    padding: EdgeInsets.only(top: 100),
-                                    height: 20,
-                                    decoration: BoxDecoration()),
-                              ]),
-                        ),
-                      )
-                    ])),
+              margin: EdgeInsets.only(top: 100),
+              child: Column(
+                children: [
+                  CardField(
+                    onCardChanged: (card) {
+                      print(card);
+                    },
+                  ),
+                  TextButton(
+                    onPressed: () async {
+                      // create payment method
+                      final paymentMethod = await Stripe.instance
+                          .createPaymentMethod(PaymentMethodParams.card());
+                    },
+                    child: Text('pay'),
+                  )
+                ],
+              ),
+            ),
           ],
         ),
       ),
